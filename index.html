@@ -1,0 +1,188 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="宝可梦移动端、笔记本与主机游戏的展示与官方获取入口。" />
+    <title>POKE / PLAYBOOK · 宝可梦游戏入口图鉴</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&family=Noto+Sans+SC:wght@400;500;700;900&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+    <script src="https://unpkg.com/lucide@latest"></script>
+  </head>
+  <body>
+    <div class="page-shell">
+      <header class="topbar">
+        <a class="brand" href="#top" aria-label="回到页面顶部">
+          <span class="brand-mark"><span></span><span></span></span>
+          <span>POKE <b>/</b> PLAYBOOK</span>
+        </a>
+        <nav class="main-nav" aria-label="主导航">
+          <a class="active" href="#catalog">游戏库</a>
+          <a href="#routes">平台路线</a>
+          <a href="#legal-downloads">合法获取</a>
+        </nav>
+        <div class="topbar-meta"><span class="live-dot"></span> 目录更新 · 2026.10</div>
+      </header>
+
+      <main id="top">
+        <section class="intro-grid" aria-labelledby="intro-title">
+          <div class="intro-copy">
+            <p class="eyebrow"><span class="eyebrow-line"></span> MOBILE · DESKTOP · CONSOLE</p>
+            <h1 id="intro-title">先看懂，<br /><em>再开始玩。</em></h1>
+            <p class="intro-text">把宝可梦游戏按平台、玩法和获取方式整理在一张地图里。这里展示实际游玩方向，入口全部指向官方页面。</p>
+            <div class="intro-actions">
+              <a class="button button-primary" href="#catalog"><i data-lucide="scan-search"></i> 浏览游戏库</a>
+              <a class="button button-quiet" href="#legal-downloads"><i data-lucide="external-link"></i> 查看获取入口</a>
+            </div>
+            <div class="intro-facts" aria-label="目录摘要">
+              <div><strong>08</strong><span>精选游戏</span></div>
+              <div><strong>03</strong><span>可用平台</span></div>
+              <div><strong>100%</strong><span>官方入口</span></div>
+            </div>
+          </div>
+          <div class="hero-stage" aria-label="精选游戏视觉预览">
+            <div class="hero-stage-top"><span>FEATURED DROP</span><span>01 / 08</span></div>
+            <div class="hero-art-wrap">
+              <div class="hero-ring ring-one"></div>
+              <div class="hero-ring ring-two"></div>
+              <div class="hero-noise"></div>
+              <img class="hero-pokemon" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/150.png" alt="超梦官方美术图" />
+              <div class="hero-sticker">TCG<br /><small>POCKET</small></div>
+              <div class="hero-caption"><span>手机端 · 收集</span><strong>宝可梦集换式卡牌游戏 Pocket</strong></div>
+            </div>
+            <div class="hero-stage-bottom"><span>COLLECT / TRADE / PLAY</span><span class="arrow-mark">↗</span></div>
+          </div>
+        </section>
+
+        <section class="catalog-section" id="catalog" aria-labelledby="catalog-title">
+          <div class="section-heading">
+            <div>
+              <p class="eyebrow">01 / GAME INDEX</p>
+              <h2 id="catalog-title">游戏库 <span id="result-count">08</span></h2>
+            </div>
+            <p class="section-note">按设备和玩法筛选，找到你现在就能玩的那一款。</p>
+          </div>
+
+          <div class="catalog-toolbar">
+            <label class="search-box">
+              <i data-lucide="search"></i>
+              <input id="search-input" type="search" placeholder="搜索游戏、玩法或平台" autocomplete="off" />
+              <kbd>/</kbd>
+            </label>
+            <div class="filter-row" id="filter-row" role="group" aria-label="平台筛选">
+              <button class="filter-chip active" data-filter="all">全部 <span>08</span></button>
+              <button class="filter-chip" data-filter="mobile">手机 <span>05</span></button>
+              <button class="filter-chip" data-filter="desktop">笔记本 <span>01</span></button>
+              <button class="filter-chip" data-filter="console">主机 <span>02</span></button>
+            </div>
+            <label class="sort-box">
+              <span>排序</span>
+              <select id="sort-select" aria-label="游戏排序">
+                <option value="featured">编辑精选</option>
+                <option value="newest">最新上线</option>
+                <option value="rating">推荐指数</option>
+              </select>
+              <i data-lucide="chevron-down"></i>
+            </label>
+          </div>
+
+          <div class="game-grid" id="game-grid" aria-live="polite"></div>
+          <div class="empty-state" id="empty-state" hidden>
+            <i data-lucide="search-x"></i>
+            <strong>没有找到匹配的游戏</strong>
+            <span>换个关键词，或清除当前筛选条件。</span>
+            <button class="text-button" id="clear-search">清除筛选 <i data-lucide="arrow-right"></i></button>
+          </div>
+        </section>
+
+        <section class="routes-section" id="routes" aria-labelledby="routes-title">
+          <div class="section-heading compact">
+            <div>
+              <p class="eyebrow">02 / PICK YOUR ROUTE</p>
+              <h2 id="routes-title">三条开始路线</h2>
+            </div>
+            <p class="section-note">设备不同，体验也不同。先选你手边的屏幕。</p>
+          </div>
+          <div class="route-grid">
+            <article class="route-card route-mobile">
+              <div class="route-number">01</div>
+              <div class="route-icon"><i data-lucide="smartphone"></i></div>
+              <h3>手机</h3>
+              <p>随时开一局，适合收集、短对战和日常养成。</p>
+              <a href="#catalog" data-route-filter="mobile">查看 05 款 <i data-lucide="arrow-up-right"></i></a>
+            </article>
+            <article class="route-card route-desktop">
+              <div class="route-number">02</div>
+              <div class="route-icon"><i data-lucide="monitor"></i></div>
+              <h3>笔记本</h3>
+              <p>卡牌对战和资料整理更舒服，适合长时间游玩。</p>
+              <a href="#catalog" data-route-filter="desktop">查看 01 款 <i data-lucide="arrow-up-right"></i></a>
+            </article>
+            <article class="route-card route-console">
+              <div class="route-number">03</div>
+              <div class="route-icon"><i data-lucide="gamepad-2"></i></div>
+              <h3>主机</h3>
+              <p>正统 RPG 和开放世界体验，内容最完整。</p>
+              <a href="#catalog" data-route-filter="console">查看 02 款 <i data-lucide="arrow-up-right"></i></a>
+            </article>
+          </div>
+        </section>
+
+        <section class="downloads-section" id="legal-downloads" aria-labelledby="downloads-title">
+          <div class="section-heading compact">
+            <div>
+              <p class="eyebrow">03 / LEGAL DOWNLOADS</p>
+              <h2 id="downloads-title">合法获取入口</h2>
+            </div>
+            <span class="source-tag"><i data-lucide="shield-check"></i> 仅收录官方与开源项目</span>
+          </div>
+          <div class="download-list">
+            <article class="download-item">
+              <div class="download-icon icon-cyan"><i data-lucide="download"></i></div>
+              <div class="download-copy"><strong>Pokémon TCG Live</strong><span>Windows · macOS · 官方卡牌客户端</span></div>
+              <a class="download-link" href="https://tcg.pokemon.com/en-us/tcglive/" target="_blank" rel="noreferrer">前往官网 <i data-lucide="arrow-up-right"></i></a>
+            </article>
+            <article class="download-item">
+              <div class="download-icon icon-yellow"><i data-lucide="layers-3"></i></div>
+              <div class="download-copy"><strong>RetroArch</strong><span>Windows · macOS · Linux · 多系统模拟器前端</span></div>
+              <a class="download-link" href="https://www.retroarch.com/?page=platforms" target="_blank" rel="noreferrer">下载客户端 <i data-lucide="arrow-up-right"></i></a>
+            </article>
+            <article class="download-item">
+              <div class="download-icon icon-coral"><i data-lucide="box"></i></div>
+              <div class="download-copy"><strong>mGBA</strong><span>Windows · macOS · Linux · GBA 模拟器</span></div>
+              <a class="download-link" href="https://mgba.io/downloads.html" target="_blank" rel="noreferrer">下载客户端 <i data-lucide="arrow-up-right"></i></a>
+            </article>
+            <article class="download-item">
+              <div class="download-icon icon-purple"><i data-lucide="cpu"></i></div>
+              <div class="download-copy"><strong>melonDS</strong><span>Windows · Linux · Nintendo DS 模拟器</span></div>
+              <a class="download-link" href="https://melonds.kuribo64.net/downloads.php" target="_blank" rel="noreferrer">下载客户端 <i data-lucide="arrow-up-right"></i></a>
+            </article>
+          </div>
+          <div class="legal-note"><i data-lucide="info"></i><span>模拟器软件本身可以合法使用；游戏 ROM、卡带镜像和破解文件请使用你自己拥有的游戏与备份。本页不提供 ROM 下载。</span></div>
+        </section>
+      </main>
+
+      <footer class="footer">
+        <div class="footer-brand">POKE / PLAYBOOK <span>CURATED GAME INDEX</span></div>
+        <div class="footer-links"><a href="#catalog">游戏库</a><a href="#legal-downloads">官方入口</a><a href="https://www.pokemon.com/" target="_blank" rel="noreferrer">Pokémon.com ↗</a></div>
+      </footer>
+    </div>
+
+    <dialog class="detail-dialog" id="detail-dialog">
+      <div class="dialog-inner">
+        <button class="dialog-close" id="dialog-close" aria-label="关闭详情"><i data-lucide="x"></i></button>
+        <div class="dialog-visual"><img id="dialog-image" alt="" /><span id="dialog-platform" class="platform-badge"></span></div>
+        <div class="dialog-content">
+          <p class="eyebrow" id="dialog-eyebrow"></p>
+          <h2 id="dialog-title"></h2>
+          <p class="dialog-description" id="dialog-description"></p>
+          <div class="dialog-meta" id="dialog-meta"></div>
+          <div class="dialog-actions"><a class="button button-primary" id="dialog-link" target="_blank" rel="noreferrer"><i data-lucide="external-link"></i> 打开官方页面</a><button class="button button-quiet" id="dialog-dismiss">返回列表</button></div>
+        </div>
+      </div>
+    </dialog>
+    <script src="app.js"></script>
+  </body>
+</html>
